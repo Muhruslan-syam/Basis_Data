@@ -1,0 +1,190 @@
+MariaDB [(none)]> create database perpus;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> use perpus
+Database changed
+MariaDB [perpus]> CREATE TABLE nama_siswaa (
+    ->     id_siswa INT PRIMARY KEY,
+    ->     nama VARCHAR(100),
+    ->     kelas VARCHAR(10),
+    ->     jurusan VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.017 sec)
+
+MariaDB [perpus]>
+MariaDB [perpus]> INSERT INTO nama_siswaa VALUES
+    -> (1, 'Andi Saputra', 'XII', 'IPA'),
+    -> (2, 'Budi Santoso', 'XI', 'IPS'),
+    -> (3, 'Citra Lestari', 'X', 'Bahasa'),
+    -> (4, 'Dewi Anggraini', 'XII', 'IPS'),
+    -> (5, 'Eko Prasetyo', 'XI', 'IPA'),
+    -> (6, 'Fajar Nugroho', 'X', 'IPA'),
+    -> (7, 'Gita Permata', 'XII', 'Bahasa'),
+    -> (8, 'Hendra Wijaya', 'XI', 'IPS'),
+    -> (9, 'Indah Sari', 'X', 'IPA'),
+    -> (10, 'Joko Susilo', 'XII', 'IPS'),
+    -> (11, 'Kiki Amelia', 'XI', 'Bahasa'),
+    -> (12, 'Lina Marlina', 'X', 'IPS'),
+    -> (13, 'Miko Prabowo', 'XII', 'IPA'),
+    -> (14, 'Nina Kartika', 'XI', 'IPA'),
+    -> (15, 'Oscar Hidayat', 'X', 'Bahasa');
+Query OK, 15 rows affected (0.062 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+MariaDB [perpus]> CREATE TABLE buku (
+    ->     id_buku INT PRIMARY KEY,
+    ->     judul VARCHAR(100),
+    ->     penulis VARCHAR(100),
+    ->     tahun_terbit INT
+    -> );
+Query OK, 0 rows affected (0.025 sec)
+
+MariaDB [perpus]>
+MariaDB [perpus]> INSERT INTO buku VALUES
+    -> (1, 'Laskar Pelangi', 'Andrea Hirata', 2005),
+    -> (2, 'Negeri 5 Menara', 'Ahmad Fuadi', 2009),
+    -> (3, 'Bumi Manusia', 'Pramoedya A. Toer', 1980),
+    -> (4, 'Perahu Kertas', 'Dee Lestari', 2009),
+    -> (5, 'Ayat-Ayat Cinta', 'Habiburrahman El Shirazy', 2004),
+    -> (6, 'Dilan 1990', 'Pidi Baiq', 2014),
+    -> (7, 'Ronggeng Dukuh Paruk', 'Ahmad Tohari', 1982),
+    -> (8, 'Supernova', 'Dee Lestari', 2001),
+    -> (9, 'Pulang', 'Leila S. Chudori', 2012),
+    -> (10, 'Sang Pemimpi', 'Andrea Hirata', 2006),
+    -> (11, 'Rantau 1 Muara', 'Ahmad Fuadi', 2013),
+    -> (12, 'Gadis Kretek', 'Ratih Kumala', 2012),
+    -> (13, 'Cantik Itu Luka', 'Eka Kurniawan', 2002),
+    -> (14, 'Amba', 'Laksmi Pamuntjak', 2012),
+    -> (15, 'Orang-Orang Biasa', 'Andrea Hirata', 2019);
+Query OK, 15 rows affected (0.005 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+MariaDB [perpus]> CREATE TABLE pinjaman_buku (
+    ->     id_pinjaman INT PRIMARY KEY,
+    ->     id_siswa INT,
+    ->     id_buku INT,
+    ->     tanggal_pinjam DATE,
+    ->     keterangan VARCHAR(100)
+    -> );
+Query OK, 0 rows affected (0.029 sec)
+
+MariaDB [perpus]>
+MariaDB [perpus]> INSERT INTO pinjaman_buku VALUES
+    -> (1, 1, 1, '2025-01-10', 'Pinjam untuk tugas'),
+    -> (2, 2, 2, '2025-01-12', 'Referensi pelajaran'),
+    -> (3, 3, 3, '2025-01-15', 'Bacaan tambahan'),
+    -> (4, 4, 4, '2025-01-18', 'Tugas Bahasa Indonesia'),
+    -> (5, 5, 5, '2025-01-20', 'Bahan diskusi'),
+    -> (6, 6, 6, '2025-01-22', 'Pinjam untuk review'),
+    -> (7, 7, 7, '2025-01-25', 'Bacaan sastra'),
+    -> (8, 8, 8, '2025-01-28', 'Tugas akhir semester'),
+    -> (9, 9, 9, '2025-02-01', 'Pinjam untuk lomba'),
+    -> (10, 10, 10, '2025-02-03', 'Referensi karya tulis'),
+    -> (11, 11, 11, '2025-02-05', 'Bacaan motivasi'),
+    -> (12, 12, 12, '2025-02-07', 'Pinjam untuk presentasi'),
+    -> (13, 13, 13, '2025-02-10', 'Bahan literasi'),
+    -> (14, 14, 14, '2025-02-12', 'Tugas kelompok'),
+    -> (15, 15, 15, '2025-02-14', 'Bacaan bebas');
+Query OK, 15 rows affected (0.007 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+MariaDB [perpus]> select * from nama_siswaa;
++----------+----------------+-------+---------+
+| id_siswa | nama           | kelas | jurusan |
++----------+----------------+-------+---------+
+|        1 | Andi Saputra   | XII   | IPA     |
+|        2 | Budi Santoso   | XI    | IPS     |
+|        3 | Citra Lestari  | X     | Bahasa  |
+|        4 | Dewi Anggraini | XII   | IPS     |
+|        5 | Eko Prasetyo   | XI    | IPA     |
+|        6 | Fajar Nugroho  | X     | IPA     |
+|        7 | Gita Permata   | XII   | Bahasa  |
+|        8 | Hendra Wijaya  | XI    | IPS     |
+|        9 | Indah Sari     | X     | IPA     |
+|       10 | Joko Susilo    | XII   | IPS     |
+|       11 | Kiki Amelia    | XI    | Bahasa  |
+|       12 | Lina Marlina   | X     | IPS     |
+|       13 | Miko Prabowo   | XII   | IPA     |
+|       14 | Nina Kartika   | XI    | IPA     |
+|       15 | Oscar Hidayat  | X     | Bahasa  |
++----------+----------------+-------+---------+
+15 rows in set (0.001 sec)
+
+MariaDB [perpus]> select * from buku;
++---------+----------------------+--------------------------+--------------+
+| id_buku | judul                | penulis                  | tahun_terbit |
++---------+----------------------+--------------------------+--------------+
+|       1 | Laskar Pelangi       | Andrea Hirata            |         2005 |
+|       2 | Negeri 5 Menara      | Ahmad Fuadi              |         2009 |
+|       3 | Bumi Manusia         | Pramoedya A. Toer        |         1980 |
+|       4 | Perahu Kertas        | Dee Lestari              |         2009 |
+|       5 | Ayat-Ayat Cinta      | Habiburrahman El Shirazy |         2004 |
+|       6 | Dilan 1990           | Pidi Baiq                |         2014 |
+|       7 | Ronggeng Dukuh Paruk | Ahmad Tohari             |         1982 |
+|       8 | Supernova            | Dee Lestari              |         2001 |
+|       9 | Pulang               | Leila S. Chudori         |         2012 |
+|      10 | Sang Pemimpi         | Andrea Hirata            |         2006 |
+|      11 | Rantau 1 Muara       | Ahmad Fuadi              |         2013 |
+|      12 | Gadis Kretek         | Ratih Kumala             |         2012 |
+|      13 | Cantik Itu Luka      | Eka Kurniawan            |         2002 |
+|      14 | Amba                 | Laksmi Pamuntjak         |         2012 |
+|      15 | Orang-Orang Biasa    | Andrea Hirata            |         2019 |
++---------+----------------------+--------------------------+--------------+
+15 rows in set (0.001 sec)
+
+MariaDB [perpus]> select * from pinjaman_buku;
++-------------+----------+---------+----------------+-------------------------+
+| id_pinjaman | id_siswa | id_buku | tanggal_pinjam | keterangan              |
++-------------+----------+---------+----------------+-------------------------+
+|           1 |        1 |       1 | 2025-01-10     | Pinjam untuk tugas      |
+|           2 |        2 |       2 | 2025-01-12     | Referensi pelajaran     |
+|           3 |        3 |       3 | 2025-01-15     | Bacaan tambahan         |
+|           4 |        4 |       4 | 2025-01-18     | Tugas Bahasa Indonesia  |
+|           5 |        5 |       5 | 2025-01-20     | Bahan diskusi           |
+|           6 |        6 |       6 | 2025-01-22     | Pinjam untuk review     |
+|           7 |        7 |       7 | 2025-01-25     | Bacaan sastra           |
+|           8 |        8 |       8 | 2025-01-28     | Tugas akhir semester    |
+|           9 |        9 |       9 | 2025-02-01     | Pinjam untuk lomba      |
+|          10 |       10 |      10 | 2025-02-03     | Referensi karya tulis   |
+|          11 |       11 |      11 | 2025-02-05     | Bacaan motivasi         |
+|          12 |       12 |      12 | 2025-02-07     | Pinjam untuk presentasi |
+|          13 |       13 |      13 | 2025-02-10     | Bahan literasi          |
+|          14 |       14 |      14 | 2025-02-12     | Tugas kelompok          |
+|          15 |       15 |      15 | 2025-02-14     | Bacaan bebas            |
++-------------+----------+---------+----------------+-------------------------+
+15 rows in set (0.001 sec)
+
+MariaDB [perpus]>
+
+MariaDB [perpus]> SELECT ns.nama, b.judul, pb.tanggal_pinjam
+    -> FROM pinjaman_buku pb
+    -> JOIN nama_siswaa ns ON pb.id_siswa = ns.id_siswa
+    -> JOIN buku b ON pb.id_buku = b.id_buku
+    -> WHERE pb.tanggal_pinjam BETWEEN '2025-02-01' AND '2025-02-10';
++--------------+-----------------+----------------+
+| nama         | judul           | tanggal_pinjam |
++--------------+-----------------+----------------+
+| Indah Sari   | Pulang          | 2025-02-01     |
+| Joko Susilo  | Sang Pemimpi    | 2025-02-03     |
+| Kiki Amelia  | Rantau 1 Muara  | 2025-02-05     |
+| Lina Marlina | Gadis Kretek    | 2025-02-07     |
+| Miko Prabowo | Cantik Itu Luka | 2025-02-10     |
++--------------+-----------------+----------------+
+5 rows in set (0.001 sec)
+
+MariaDB [perpus]> SELECT ns.nama, b.judul, pb.tanggal_pinjam
+    -> FROM pinjaman_buku pb
+    -> JOIN nama_siswaa ns ON pb.id_siswa = ns.id_siswa
+    -> JOIN buku b ON pb.id_buku = b.id_buku
+    -> WHERE ns.jurusan = 'IPA'
+    ->   AND pb.tanggal_pinjam BETWEEN '2025-01-20' AND '2025-02-05';
++---------------+-----------------+----------------+
+| nama          | judul           | tanggal_pinjam |
++---------------+-----------------+----------------+
+| Eko Prasetyo  | Ayat-Ayat Cinta | 2025-01-20     |
+| Fajar Nugroho | Dilan 1990      | 2025-01-22     |
+| Indah Sari    | Pulang          | 2025-02-01     |
++---------------+-----------------+----------------+
+3 rows in set (0.002 sec)
+
+MariaDB [perpus]>
